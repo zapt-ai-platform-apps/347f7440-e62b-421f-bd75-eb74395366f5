@@ -77,30 +77,34 @@ export default function App() {
             />
           ) : (
             <div>
-              <div className="flex justify-between">
-                {!addingTask ? (
+              <div className="flex w-full">
+                <div className="flex-grow">
+                  {!addingTask ? (
+                    <button
+                      onClick={handleAddTaskClick}
+                      className="w-full py-4 bg-neonGreen text-white font-bold rounded cursor-pointer"
+                      style={{ backgroundColor: '#39FF14' }}
+                    >
+                      Add Task
+                    </button>
+                  ) : (
+                    <button
+                      disabled
+                      className="w-full py-4 bg-gray-400 text-white font-bold rounded cursor-not-allowed"
+                    >
+                      Add Task
+                    </button>
+                  )}
+                </div>
+                <div className="ml-2">
                   <button
-                    onClick={handleAddTaskClick}
-                    className="w-1/2 py-4 bg-neonGreen text-white font-bold rounded cursor-pointer"
-                    style={{ backgroundColor: '#39FF14' }}
+                    onClick={() => setTimerMode(true)}
+                    className="py-4 px-6 bg-yellow-400 text-black font-bold rounded cursor-pointer"
+                    style={{ backgroundColor: '#FFFF00' }}
                   >
-                    Add Task
+                    Set Timer
                   </button>
-                ) : (
-                  <button
-                    disabled
-                    className="w-1/2 py-4 bg-gray-400 text-white font-bold rounded cursor-not-allowed"
-                  >
-                    Add Task
-                  </button>
-                )}
-                <button
-                  onClick={() => setTimerMode(true)}
-                  className="w-1/2 py-4 bg-yellow-400 text-black font-bold rounded cursor-pointer"
-                  style={{ backgroundColor: '#FFFF00' }}
-                >
-                  Set Timer
-                </button>
+                </div>
               </div>
               {addingTask && (
                 <input
