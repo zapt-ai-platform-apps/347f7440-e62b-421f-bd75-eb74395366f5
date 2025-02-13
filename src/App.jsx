@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import TaskList from './TaskList';
+import TaskList from './components/TaskList';
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
@@ -55,15 +55,14 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col">
-      <header className="p-4 flex justify-between items-center">
+      <header className="p-4 relative text-center">
+        <h1 className="text-xl font-bold">SnapTasks</h1>
         <button
           onClick={toggleDarkMode}
-          className="cursor-pointer border px-2 py-1 rounded box-border"
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 cursor-pointer border px-2 py-1 rounded box-border"
         >
           {darkMode ? "Light Mode" : "Dark Mode"}
         </button>
-        <h1 className="text-xl font-bold">SnapTasks</h1>
-        <div></div>
       </header>
       <main className="flex-1 flex flex-col items-center p-4">
         <div className="w-full max-w-xl">
@@ -83,7 +82,7 @@ export default function App() {
               value={newTaskText}
               onChange={(e) => setNewTaskText(e.target.value)}
               onKeyDown={handleNewTaskKeyDown}
-              className="w-full p-2 mt-2 border rounded box-border"
+              className="w-full p-2 mt-2 border rounded box-border dark:text-black"
               placeholder="Enter task description"
             />
           )}
